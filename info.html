@@ -1,0 +1,54 @@
+<html>
+<head>
+	<title>Wine Shop - About</title>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<!-- Add CSS styling -->
+	<link rel="stylesheet" href="style.css">
+	<script type = "text/javascript">
+    function sayHello() {
+        alert("Hello Everyone!!")
+    }
+</script>
+</head>
+<body>
+	<header>
+		<h1>Wine Shop</h1>
+		<nav>
+			<ul>
+				<li><a href="index.html">Home</a></li>
+				<li><a href="shop.html">Shop</a></li>
+				<li><a href="#">About</a></li>
+				<li><a href="contact.html">Contact</a></li>
+				<li><a href="#" onclick="showCart()">Cart</a></li>
+			</ul>
+		</nav>
+		<script>
+		    function sendToBackend(data) {
+  // create a new XMLHttpRequest object
+  let xhttp = new XMLHttpRequest();
+
+  // specify the HTTP method and URL endpoint
+  xhttp.open("POST", "/api/endpoint", true);
+
+  // set the request headers
+  xhttp.setRequestHeader("Content-Type", "application/json");
+
+  // handle the response from the server
+  xhttp.onreadystatechange = function() {
+    if (this.readyState == 4 && this.status == 200) {
+      // do something with the response data
+      console.log(this.responseText);
+    }
+  };
+
+  // convert the data object to a JSON string
+  let jsonData = JSON.stringify(data);
+
+  // send the request with the JSON data
+  xhttp.send(jsonData);
+}
+		</script>
+	</header>
+<body/>
+<html/>

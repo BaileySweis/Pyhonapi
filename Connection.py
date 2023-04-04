@@ -8,8 +8,17 @@ connection = db.connect(
     "Database=GVV2;"
     "Trusted_Connection=yes;")
 cursor = connection.cursor()
+
+# From here you can do things such as 'Select all from Products'
 cursor.execute("Select * From Products")
 rows = cursor.fetchall()
 
 for row in rows:
     print(row)
+
+#Use indexing to show us only product name 
+cursor.execute("Select * From Products")
+rows = cursor.fetchall()
+
+for row in rows:
+    print(row[1])

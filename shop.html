@@ -18,15 +18,33 @@
 			</ul>
 		</nav>
 		<script>
-		function onClick(itemName, itemPrice) {
-			fetch('Connection.py')
-				.then(response => response.text())
-				.then(output => {
-					console.log(output);
-					// Display the output on the HTML page
-					document.getElementById('output').innerHTML = output;
-				})
-				.catch(error => console.error(error));
+		const { spawn } = require('child_process');
+
+		function runPythonScript(scriptPath, args, callback) {
+		  // spawn the python script as a child process
+		  const python = spawn('python', [scriptPath, ...args]);
+
+		  // collect data from script's stdout and stderr streams
+		  let data = '';
+		  python.stdout.on('data', function (buffer) {
+		    data += buffer.toString();
+		  });
+		  python.stderr.on('data', function (buffer) {
+		    data += buffer.toString();
+		  });
+
+		  // when the script is done, call the provided callback function with the collected data
+		  python.on('close', function (code) {
+		    callback(data);
+		  });
+		}
+
+		function onClick() {
+		  // call the Python script with arguments
+		  runPythonScript('Connection.py', function (data) {
+		    // output the script's results in the "output" div
+		    document.getElementById('output').innerHTML = data;
+		  });
 		}
 		</script>
 	</header>

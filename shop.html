@@ -41,7 +41,7 @@
 
 		function onClick() {
 		  // call the Python script with arguments
-		  runPythonScript('Connection.py', function (data) {
+		  runPythonScript('Connection.py', [0,0],function (data) {
 		    // output the script's results in the "output" div
 		    document.getElementById('output').innerHTML = data;
 		  });

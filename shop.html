@@ -1,50 +1,60 @@
-main>
-  <section>
-    <h2>Shop Our Selection of Wines</h2>
-    <table>
-      <tr>
-        <th>Wine Name</th>
-        <th>Category</th>
-        <th>Stock</th>
-        <th></th>
-      </tr>
-      <tr>
-        <td>Red Wine 1</td>
-        <td>Red</td>
-        <td>10</td>
-        <td><button onclick="showDetails('Red Wine 1', 'Red', '10')">More Information</button></td>
-      </tr>
-      <tr>
-        <td>White Wine 1</td>
-        <td>White</td>
-        <td>5</td>
-        <td><button onclick="showDetails('White Wine 1', 'White', '5')">More Information</button></td>
-      </tr>
-      <tr>
-        <td>Rosé Wine 1</td>
-        <td>Rosé</td>
-        <td>2</td>
-        <td><button onclick="showDetails('Rosé Wine 1', 'Rosé', '2')">More Information</button></td>
-      </tr>
-    </table>
-  </section>
-  <section>
-    <h2>Product Information</h2>
-    <div id="output"></div>
-  </section>
-</main>
-
-<script>
-  function showDetails(name, category, stock) {
-    // create the HTML content to display the details
-    let html = `
-      <div>
-        <h3>${name}</h3>
-        <p>Category: ${category}</p>
-        <p>Stock: ${stock}</p>
-      </div>
-    `;
-    // display the details in the output div
-    document.getElementById('output').innerHTML = html;
+<html>
+<head>
+	<title>Shop - Wine Shop</title>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<!-- Add CSS styling -->
+	<link rel="stylesheet" href="style.css">
+	<script>
+  function onClick(name) {
+    var img = document.createElement("img");
+    img.src = name + ".jpg";
+    document.getElementById("output").appendChild(img);
   }
-</script>
+	</script>
+</head>
+<body>
+	<header>
+		<h1>VTC</h1>
+		<nav>
+			<ul>
+				<li><a href="index.html">Home</a></li>
+				<li><a href="#">Shop</a></li>
+				<li><a href="about.html">About</a></li>
+				<li><a href="contact.html">Contact</a></li>
+			</ul>
+		</nav>
+	</header>
+
+	<main>
+		<section>
+			<h2>Shop Our Selection of Wines</h2>
+			<ul>
+				<li>
+					<h3>Red</h3>
+					<p>$19.99</p>
+					<button onclick="onClick(red-wine)">More Information</button>
+				</li>
+				<li>
+					<h3>White</h3>
+					<p>$24.99</p>
+					<button onclick="onClick(white-wine)">More Information</button>
+				</li>
+				<li>
+					<h3>Rose´</h3>
+					<p>$29.99</p>
+					<button onclick="onClick(rose)">More Information</button>
+				</li>
+			</ul>
+		</section>
+		<section>
+			<h2>Product Information</h2>
+			<img id="product-image" src="placeholder.jpg" alt="Product Image">
+		</section>
+	</main>
+
+	<footer>
+		<p>&copy; 2023 Wine Shop</p>
+	</footer>
+</body>
+</html>
